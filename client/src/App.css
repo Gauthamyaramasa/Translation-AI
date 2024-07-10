@@ -1,0 +1,120 @@
+/* App.css */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #e9eff1;
+}
+
+.App {
+  text-align: center;
+  padding-top: 20px;
+}
+
+h1{
+  font-size: 45px;
+}
+.chat-container {
+  display: flex;
+  justify-content: center;
+  gap: 150px;
+  padding: 4px;
+}
+
+.chat-box {
+  background: #fff;
+  border: 2px solid black;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  width: 450px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  margin: 0;
+  padding: 10px;
+  background-color: #64fc2c;
+  border: 2px solid black;
+  color: #000000;
+  border-radius: 8px 8px 0 0;
+}
+
+.messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  padding: 8px 12px;
+  border-radius: 18px;
+  margin: 5px 0;
+  word-break: break-word;
+  max-width: 75%;
+  align-self: flex-start; /* Default alignment for received messages */
+}
+
+.message.right {
+  background-color: #b4ec8a;
+  align-self: flex-end; /* Align right for sent messages */
+  color: black;
+}
+
+.message.left {
+  background-color: #e9eff1;
+  align-self: flex-start; /* Align left for received messages */
+}
+
+.chat-input {
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type="text"] {
+  flex-grow: 1;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: #64fc2c;
+  color: black;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #39d102;
+}
+
+.language-selection-container {
+  display: flex;
+  justify-content: center;
+  gap: 350px;
+  margin-bottom: 15px;
+}
+
+.language-select {
+  margin-bottom: 1px;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 10px 10px;
+  background-color: #64fc2c;
+  color: black;
+  cursor: pointer;
+}
+
+.language-select label {
+  margin-right: 5px;
+}
