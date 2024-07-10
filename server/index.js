@@ -15,6 +15,10 @@ const bhashiniAxios = axios.create({
   }
 });
 
+app.get('/', (req, res) => {
+  res.send('Server is running');
+});
+
 app.post('/translate', async (req, res) => {
   const { text, sourceLang, targetLang } = req.body;
 
@@ -22,7 +26,6 @@ app.post('/translate', async (req, res) => {
   console.log('Received source language:', sourceLang);
   console.log('Received target language:', targetLang);
 
-  // Check if the source and target languages are the same
   if (sourceLang === targetLang) {
     console.log('Source and target languages are the same. No translation needed.');
     return res.json({ translatedText: text });
