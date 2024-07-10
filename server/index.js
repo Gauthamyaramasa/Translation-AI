@@ -2,8 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
-const { createServer } = require('http');
-const { parse } = require('url');
 
 const app = express();
 app.use(cors());
@@ -17,7 +15,7 @@ const bhashiniAxios = axios.create({
   }
 });
 
-app.post('/api/translate', async (req, res) => {
+app.post('/translate', async (req, res) => {
   const { text, sourceLang, targetLang } = req.body;
 
   console.log('TEXT:', text);
@@ -100,7 +98,7 @@ app.post('/api/translate', async (req, res) => {
   }
 });
 
-module.exports = (req, res) => {
-  const parsedUrl = parse(req.url, true);
-  createServer(app).emit('request', req, res);
-};
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
