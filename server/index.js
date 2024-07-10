@@ -15,7 +15,7 @@ const bhashiniAxios = axios.create({
   }
 });
 
-app.get('/', (req, res) => {
+app.get('/translate', (req, res) => {
   res.send('Server is running');
 });
 
