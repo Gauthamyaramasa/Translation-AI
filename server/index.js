@@ -15,11 +15,7 @@ const bhashiniAxios = axios.create({
   }
 });
 
-app.get('/', (req, res) => {
-  res.send('Server is running');
-});
-
-app.post('/translate', async (req, res) => {
+app.get('/translate', async (req, res) => {
   const { text, sourceLang, targetLang } = req.body;
 
   if (sourceLang === targetLang) {
@@ -91,10 +87,10 @@ app.post('/translate', async (req, res) => {
   }
 });
 
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 
 module.exports = app;
