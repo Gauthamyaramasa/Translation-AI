@@ -27,7 +27,7 @@ function App() {
       // Reset input to empty
       sender === 'A' ? setMessageA('') : setMessageB('');
 
-      fetch('https://translation-ai-server.onrender.com/translate', {
+      fetch('https://translation-ai-server.vercel.app/translate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Translation AI</h1>
+      <h1>Translation Script AI</h1>
       <div className="language-selection-container">
         <div className="language-select">
           <label htmlFor="language-a">Preferred Language:</label>
@@ -89,7 +89,7 @@ function App() {
       <div className="chat-container">
         {/* User A Chat Box */}
       <div className="chat-box">
-        <h2>User A</h2>
+        <h2>Paste your Script</h2>
         <div className="messages">
           {chatA.map((msg, index) => (
             <p key={index} className={`message ${msg.sender === 'A' ? 'right' : 'left'}`}>{msg.message}</p>
@@ -104,7 +104,7 @@ function App() {
         
         {/* User B Chat Box */}
       <div className="chat-box">
-        <h2>User B</h2>
+        <h2>Translated Script</h2>
         <div className="messages">
           {chatB.map((msg, index) => (
             <p key={index} className={`message ${msg.sender === 'B' ? 'right' : 'left'}`}>{msg.message}</p>
