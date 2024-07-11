@@ -27,7 +27,7 @@ function App() {
       // Reset input to empty
       sender === 'A' ? setMessageA('') : setMessageB('');
 
-      fetch('https://translation-ai-server.vercel.app/translate', {
+      fetch('https://translation-ai-server.onrender.com/translate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
