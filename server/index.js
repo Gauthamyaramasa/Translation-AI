@@ -15,6 +15,10 @@ const bhashiniAxios = axios.create({
   }
 });
 
+// Root route to handle GET requests to the root URL
+app.get('/', (req, res) => {
+  res.send('Welcome to the Translation API');
+});
 
 app.post('/translate', async (req, res) => {
   const { text, sourceLang, targetLang } = req.body;
@@ -92,4 +96,3 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
