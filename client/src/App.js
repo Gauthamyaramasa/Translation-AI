@@ -27,7 +27,7 @@ function App() {
       // Reset input to empty
       sender === 'A' ? setMessageA('') : setMessageB('');
 
-      fetch('https://translation-ai.vercel.app/api/translate', {
+      fetch('http://localhost:5000/translate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
