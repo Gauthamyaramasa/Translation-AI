@@ -22,12 +22,12 @@ function App() {
     const messageToSend = sender === 'A' ? messageA : messageB;
     const sourceLangCode = languageCodes[sender === 'A' ? languageA : languageB];
     const targetLangCode = languageCodes[sender === 'A' ? languageB : languageA];
-
+    
     if (messageToSend) {
       // Reset input to empty
       sender === 'A' ? setMessageA('') : setMessageB('');
 
-      fetch(`${process.env.BACKEND_URL}/translate`, {
+      fetch('http://localhost:5000/translate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ function App() {
       .then(data => {
         // Assume data contains { translatedText: '...', targetLang: '...' }
         const translatedText = data.translatedText;
-
+        
         // Update chat for User A or User B depending on the sender
         if (sender === 'A') {
           setChatA((prevChat) => [...prevChat, { sender, message: messageToSend }]);
@@ -57,6 +57,7 @@ function App() {
       });
     }
   };
+
 
   return (
     <div className="App">
@@ -87,34 +88,35 @@ function App() {
       </div>
       <div className="chat-container">
         {/* User A Chat Box */}
-        <div className="chat-box">
-          <h2>User A</h2>
-          <div className="messages">
-            {chatA.map((msg, index) => (
-              <p key={index} className={`message ${msg.sender === 'A' ? 'right' : 'left'}`}>{msg.message}</p>
-            ))}
-          </div>
-          {/* Message input for User A */}
-          <div className="chat-input">
+      <div className="chat-box">
+        <h2>User A</h2>
+        <div className="messages">
+          {chatA.map((msg, index) => (
+            <p key={index} className={`message ${msg.sender === 'A' ? 'right' : 'left'}`}>{msg.message}</p>
+          ))}
+        </div>
+        {/* Message input for User A */}
+        <div className="chat-input">
             <input type="text" value={messageA} onChange={(e) => setMessageA(e.target.value)} />
             <button onClick={() => sendMessage('A')}>Translate</button>
           </div>
-        </div>
+      </div>
         
         {/* User B Chat Box */}
-        <div className="chat-box">
-          <h2>User B</h2>
-          <div className="messages">
-            {chatB.map((msg, index) => (
-              <p key={index} className={`message ${msg.sender === 'B' ? 'right' : 'left'}`}>{msg.message}</p>
-            ))}
-          </div>
-          {/* Message input for User B */}
-          <div className="chat-input">
+      <div className="chat-box">
+        <h2>User B</h2>
+        <div className="messages">
+          {chatB.map((msg, index) => (
+            <p key={index} className={`message ${msg.sender === 'B' ? 'right' : 'left'}`}>{msg.message}</p>
+          ))}
+        </div>
+        {/* Message input for User B */}
+        <div className="chat-input">
             <input type="text" value={messageB} onChange={(e) => setMessageB(e.target.value)} />
             <button onClick={() => sendMessage('B')}>Translate</button>
           </div>
-        </div>
+      </div>
+
       </div>
     </div>
   );
